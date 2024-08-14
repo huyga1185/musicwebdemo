@@ -5,6 +5,7 @@
   body {
     background-color: #121212;
     font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
   }
   
   .sidebar {
@@ -145,6 +146,7 @@
   
   .playlist-section {
     padding: 20px 40px;
+    padding-right: 70px;
   }
   .playlist-section h2 {
     color: #ffffff;
@@ -154,7 +156,10 @@
   .playlist-section .playlist-grid {
     display: flex;
     gap: 20px;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
   }
   .playlist-section .playlist-item {
     min-width: 140px;
@@ -269,3 +274,13 @@
     color: #FFFFFF;
   }
   
+  i{
+    position: absolute;
+    top : 5px;
+    left: 11px;
+    font-size: 25px;
+  }
+
+  .break-pages{
+    display: block;
+  }

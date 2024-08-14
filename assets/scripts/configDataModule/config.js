@@ -1,41 +1,41 @@
-// import communicate from 'https://74senpai.github.io/coFiGre/resources/js/Core/communicate.js';
+import communicate from 'https://74senpai.github.io/coFiGre/resources/js/Core/communicate.js';
 
 function navMenu(){
     return`
         <div class="nav-menu">
                 <ul>
                    <li>
-                       <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">
+                       <a href="#" onclick="handle.link('playlist')" >
                            <span class="icon-home"></span>
                            <span>Online Music</span> <!-- Tiêu đề nút Trang Chủ -->
                        </a>
                    </li>
                    <li>
-                       <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">
+                       <a href="#" onclick="handle.link()" >
                            <span class="icon-home"></span>
                            <span>Discovery</span> <!-- Tiêu đề nút Trang Chủ -->
                        </a>
                    </li>
                    <li>
-                       <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">
+                       <a href="#" onclick="handle.link()" >
                            <span class="icon-search"></span>
                            <span>Artists</span> <!-- Tiêu đề nút Tìm Kiếm -->
                        </a>
                    </li>
                    <li>
-                       <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">
+                       <a href="#" onclick="handle.link('albums')" >
                            <span class="icon-library"></span>
                            <span>Albums</span> <!-- Tiêu đề nút Thư Viện -->
                        </a>
                    </li>
                    <li>
-                       <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">
+                       <a href="#" onclick="handle.link()" >
                            <span class="icon-library"></span>
                            <span>Stations</span> <!-- Tiêu đề nút Thư Viện -->
                        </a>
                    </li>
                    <li>
-                       <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">
+                       <a href="#" onclick="handle.link()" >
                            <span class="icon-library"></span>
                            <span>Music</span> <!-- Tiêu đề nút Thư Viện -->
                        </a>
@@ -46,13 +46,13 @@ function navMenu(){
            <div class="nav-secondary">
                <ul>
                    <li>
-                       <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">
+                       <a href="#" onclick="handle.link()">
                            <span class="icon-create-playlist"></span>
                            <span>Your Music</span> <!-- Tiêu đề nút Tạo Playlist -->
                        </a>
                    </li>
                    <li>
-                       <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">
+                       <a href="#" onclick="handle.link()" >
                            <span class="icon-liked-songs"></span>
                            <span>Download</span> <!-- Tiêu đề nút Bài Hát Yêu Thích -->
                        </a>
@@ -66,89 +66,37 @@ function footer(){
     return `
          <ul>
                 <li>
-                    <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">Cookies</a>
+                    <a href="#" onclick="handle.link()" >Cookies</a>
                 </li>
                 <li>
-                    <a href="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180">Riêng Tư</a> <!-- Liên kết Chính sách Riêng Tư -->
+                    <a href="#" onclick="handle.link()" >Riêng Tư</a> <!-- Liên kết Chính sách Riêng Tư -->
                 </li>
             </ul>
     `;
 }
 
 function playlist1(){
-    return `
-        <div class="playlist-item">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                    <div class="play-button">
-                        <span class="icon-play"></span>
-                    </div>
-                    <h4>Bản Hit Hôm Nay</h4> 
-                    <p>Rema & Selena Gomez đang đứng đầu bảng...</p>
+    const nhac_sep = communicate.request_data('store', 'sontung');
+    const bai_hat = nhac_sep.play_list;
+    let HTMLs = "";
+    let length = bai_hat.length;
+    for(let i = 0 ; i <  length; i++){
+        HTMLs += `
+            <div class="playlist-item">
+                <img src="${bai_hat[i].img}" />
+                <div class="play-button" onclick="handle.play(this)">
+                    <span class="icon-play" ><i class="fa-solid fa-play"></i></span>
+                    <audio preload="none">
+                        <source src="${bai_hat[i].audio_src}" type="audio/ogg">
+                    </audio>
                 </div>
-
-                <div class="playlist-item">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                    <div class="play-button">
-                        <span class="icon-play"></span>
-                    </div>
-                    <h4>RapCaviar</h4> 
-                    <p>Nhạc mới từ Lil Baby, Juice WRLD và...</p>
-                </div>
-
-                <div class="playlist-item">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                    <div class="play-button">
-                        <span class="icon-play"></span>
-                    </div>
-                    <h4>All out 2010s</h4> 
-                    <p>Những bài hát lớn nhất của thập niên 2010...</p>
-                </div>
-
-                <div class="playlist-item">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                    <div class="play-button">
-                        <span class="icon-play"></span>
-                    </div>
-                    <h4>Rock Kinh Điển</h4> 
-                    <p>Những huyền thoại Rock và các bài hát vẫn tiếp tục...</p>
-                </div>
-
-                <div class="playlist-item">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                    <div class="play-button">
-                        <span class="icon-play"></span>
-                    </div>
-                    <h4>Bản Chill</h4> 
-                    <p>Thư giãn với những bài nhạc mới và gần đây...</p>
-                </div>
-
-                <div class="playlist-item">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                    <div class="play-button">
-                        <span class="icon-play"></span>
-                    </div>
-                    <h4>Viva Latino</h4> 
-                    <p>Những bản hit Latin hàng đầu hôm nay...</p>
-                </div>
-
-                <div class="playlist-item">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                    <div class="play-button">
-                        <span class="icon-play"></span>
-                    </div>
-                    <h4>Mega Hit Mix</h4> 
-                    <p>Một sự pha trộn lớn của 75 bài yêu thích từ...</p>
-                </div>
-
-                <div class="playlist-item">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                    <div class="play-button">
-                        <span class="icon-play"></span>
-                    </div>
-                    <h4>All out 80s</h4> 
-                    <p>Những bài hát lớn nhất của thập niên 1980...</p>
-                </div>
-    `;
+                <h4>${bai_hat[i].name_song}</h4> 
+                <p>${bai_hat[i].author}</p>
+            </div>
+        `;
+    }
+    return HTMLs;
+    
 }
 
 function playlist2(){
@@ -215,14 +163,14 @@ function user_menu(){
                 <input type="textbox" placeholder="Tim Kiem">
                 <ul>
                     <li>
-                        <a href="#">Thong bao</a> <!-- Liên kết Tải Về -->
+                        <a href="#" onclick="handle.link()" >Thong bao</a> <!-- Liên kết Tải Về -->
                     </li>
                     <li>
-                        <a href="#">Hỗ Trợ</a> <!-- Liên kết Tải Về -->
+                        <a href="#" onclick="handle.link()" >Hỗ Trợ</a> <!-- Liên kết Tải Về -->
                     </li>
                     <li class="divider">|</li>
                     <li>
-                        <a href="#">Đăng Ký</a> <!-- Liên kết Đăng Ký -->
+                        <a href="#" onclick="handle.link()" >Đăng Ký</a> <!-- Liên kết Đăng Ký -->
                     </li>
                 </ul>
                 <!-- Nút Đăng Nhập -->
@@ -261,6 +209,8 @@ const config = {
                 return playlist_Section();
             case "nav-menu":
                 return navMenu();
+            case "albums":
+                return `<h2>Albums Đây</h2>`;
         }
     }
 }
