@@ -1,6 +1,8 @@
 "use stric";
 import communicate from 'https://74senpai.github.io/coFiGre/resources/js/Core/communicate.js';
 import config from './config.js';
+
+const $ = document.querySelector.bind(document);
 communicate.unlogger('all', 'all', true);
 
 communicate.send('output', config.get_data_config('nav-menu'), 'nav_menu');
@@ -20,6 +22,24 @@ let afterSong = "";
     await communicate.get_data_API('fakeAPI.json', 'json', 'sontung');
     communicate.send('output', config.get_data_config('playlist'), 'playlist');
     communicate.view_render('#box-playlist', 'playlist');
+
+    $('.playlist-grid').addEventListener('mousemove', function(event) {
+
+        const rect = this.getBoundingClientRect();
+        const mouseX = event.clientX;
+    
+        const distanceToLeft = mouseX - rect.left;
+        const distanceToRight = rect.right - mouseX;
+    
+        const value = this.scrollWidth;
+        if (distanceToLeft < 100) {
+            this.scrollLeft -= value;
+        }
+        if (distanceToRight < 120) {
+            this.scrollLeft += value; 
+        }
+    });
+
     communicate.declare_action('link', (site)=>{
         if(site){
             communicate.send('output', config.get_data_config(`${site}`), `${site}`);

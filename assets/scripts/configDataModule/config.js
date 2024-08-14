@@ -102,49 +102,49 @@ function playlist1(){
 function playlist2(){
     return `
          <div class="playlist-item">
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                        <div class="play-button">
-                            <span class="icon-play"></span>
-                        </div>
-                        <h4>Đàn Piano Bình Yên</h4> 
-                        <p>Thư giãn và tận hưởng với những bản nhạc piano đẹp...</p>
-                    </div>
+            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
+            <div class="play-button">
+                <span class="icon-play"></span>
+            </div>
+            <h4>Đàn Piano Bình Yên</h4> 
+            <p>Thư giãn và tận hưởng với những bản nhạc piano đẹp...</p>
+        </div>
 
-                    <div class="playlist-item">
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                        <div class="play-button">
-                            <span class="icon-play"></span>
-                        </div>
-                        <h4>Tập Trung Sâu</h4> 
-                        <p>Giữ bình tĩnh và tập trung với nhạc nền và...</p>
-                    </div>
+        <div class="playlist-item">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
+            <div class="play-button">
+                <span class="icon-play"></span>
+            </div>
+            <h4>Tập Trung Sâu</h4> 
+            <p>Giữ bình tĩnh và tập trung với nhạc nền và...</p>
+        </div>
 
-                    <div class="playlist-item">
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                        <div class="play-button">
-                            <span class="icon-play"></span>
-                        </div>
-                        <h4>Nghiên Cứu Nhạc Cụ</h4> 
-                        <p>Tập trung với nhạc nhẹ nhàng trong khi học tập...</p>
-                    </div>
+        <div class="playlist-item">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
+            <div class="play-button">
+                <span class="icon-play"></span>
+            </div>
+            <h4>Nghiên Cứu Nhạc Cụ</h4> 
+            <p>Tập trung với nhạc nhẹ nhàng trong khi học tập...</p>
+        </div>
 
-                    <div class="playlist-item">
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                        <div class="play-button">
-                            <span class="icon-play"></span>
-                        </div>
-                        <h4>Chill Lofi Học Tập</h4> 
-                        <p>Những giai điệu học tập hoàn hảo, hai tư giờ...</p>
-                    </div>
+        <div class="playlist-item">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
+            <div class="play-button">
+                <span class="icon-play"></span>
+            </div>
+            <h4>Chill Lofi Học Tập</h4> 
+            <p>Những giai điệu học tập hoàn hảo, hai tư giờ...</p>
+        </div>
 
-                    <div class="playlist-item">
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-                        <div class="play-button">
-                            <span class="icon-play"></span>
-                        </div>
-                        <h4>Chế Độ Lập Trình</h4> 
-                        <p>Dành riêng cho tất cả lập trình viên ngoài kia...</p>
-                    </div>
+        <div class="playlist-item">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
+            <div class="play-button">
+                <span class="icon-play"></span>
+            </div>
+            <h4>Chế Độ Lập Trình</h4> 
+            <p>Dành riêng cho tất cả lập trình viên ngoài kia...</p>
+        </div>
     `;
 }
 
@@ -195,6 +195,24 @@ function playlist_Section(){
     `;
 }
 
+function albums() {
+    return `
+    <div class="playlist-section">
+        <h2>Danh Sách Ablums</h2>
+        <div class="playlist-grid">
+            <div class="playlist-item">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
+            <div class="play-button">
+                <span class="icon-play"></span>
+                </div>
+                <h4>Nhac Cua Sep</h4> 
+                <p>Thư giãn và tận hưởng với những bản nhạc cua sep Tung</p>
+            </div>
+        </div>
+    </div>
+        
+    `;
+}
 
 const config = {
     get_data_config(type){
@@ -210,7 +228,7 @@ const config = {
             case "nav-menu":
                 return navMenu();
             case "albums":
-                return `<h2>Albums Đây</h2>`;
+                return albums();
         }
     }
 }
