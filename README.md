@@ -20,4 +20,3 @@
 
 - Lập trình HTML, CSS, JavaScript cơ bản
 - Lập trình PhP, MySQL cơ bản
-
