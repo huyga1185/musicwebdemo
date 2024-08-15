@@ -1,6 +1,5 @@
 <?php
     include_once('connect.php');
-
     $sql = "SELECT 
                 songs.title AS song_title, 
                 songs.duration, 
@@ -19,12 +18,16 @@
             INNER JOIN album ON songs.albumid = album.albumid
             INNER JOIN artist ON songs.artistid = artist.artistid;";
     $result = $conn->query($sql);
-    $data = array();
+    $songs = array();
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
+            $songs[] = $row;
         }
     }
+    $data = [
+        "play_list" => $songs
+    ];
+    
     $conn->close();
     header('Content-Type: application/json');
     echo json_encode($data);
