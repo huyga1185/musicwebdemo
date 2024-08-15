@@ -75,21 +75,59 @@ function footer(){
     `;
 }
 
+function controlBar(){
+    return`
+        <div class="music-player-component">
+            <div class="music-player">
+                <div class="song-info">
+                    <img src="" alt="Album Art" class="album-art">
+                    <div class="song-details">
+                        <h4 class="name-song">Hãy Trao Cho Anh</h4>
+                        <p class="author">Sơn Tùng</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <div class="loop-btn"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <div class="backward-btn" onclick="handle.next(false)"><i class="fa-solid fa-backward"></i></div>
+                    <div class="play-btn" onclick="handle.play()"><i class="fa-solid fa-play"></i></div>
+                    <div class="next-btn" onclick="handle.next(false)"><i class="fa-solid fa-forward"></i></div>
+                    <div class="random-btn"><i class="fa-solid fa-shuffle"></i></div>
+                </div>
+                <div class="progress">
+                    <span class="current-time">00:00</span>
+                    <input type="range" value="0" min="0" max="246">
+                    <span class="duration-time">04:06</span>
+                </div>
+                <div class="extra-controls">
+                    <div class="volume-btn"><i class="fa-solid fa-volume-low"></i></div>
+                    <input type="range" class="volume-slider" min="0" max="100" value="50">
+                </div>
+            </div>
+        </div>
+    `;
+}
+
 function playlist1(){
     const nhac_sep = communicate.request_data('store', 'sontung');
     const bai_hat = nhac_sep.play_list;
     let HTMLs = "";
     let length = bai_hat.length;
+    // <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif" class="isPlay"/>
     for(let i = 0 ; i <  length; i++){
         HTMLs += `
-            <div class="playlist-item">
+            <div class="playlist-item" data-index="${i}">
+                
                 <img src="${bai_hat[i].img}" />
-                <div class="play-button" onclick="handle.play(this)">
-                    <span class="icon-play" ><i class="fa-solid fa-play"></i></span>
+                
+                <div class="play-button" onclick="handle.play(this, ${i})">
+                    <span class="icon-play" >
+                        <i class="fa-solid fa-play"></i>
+                    </span>
                     <audio preload="none">
                         <source src="${bai_hat[i].audio_src}" type="audio/ogg">
                     </audio>
                 </div>
+                
                 <h4>${bai_hat[i].name_song}</h4> 
                 <p>${bai_hat[i].author}</p>
             </div>
@@ -229,6 +267,8 @@ const config = {
                 return navMenu();
             case "albums":
                 return albums();
+            case "control-bar":
+                return controlBar();
         }
     }
 }

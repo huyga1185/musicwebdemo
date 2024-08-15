@@ -16,12 +16,16 @@ communicate.view_render('.top-navigation', 'menu');
 
 let isPlay = false;
 let afterSong = "";
+let indexCurrent = 0;
 
 (async()=>{
 
     await communicate.get_data_API('fakeAPI.json', 'json', 'sontung');
     communicate.send('output', config.get_data_config('playlist'), 'playlist');
     communicate.view_render('#box-playlist', 'playlist');
+
+    communicate.send('output', config.get_data_config('control-bar'), 'control_bar');
+    communicate.view_render('#control', 'control_bar');
 
     $('.playlist-grid').addEventListener('mousemove', function(event) {
 
@@ -48,19 +52,51 @@ let afterSong = "";
         }
         alert('Chức năng đang được phát triển');
     });
-    communicate.declare_action('play', (_this)=>{
+
+    $('.song-info img').src = $(`[data-index="${indexCurrent}"] img`).src;
+    communicate.declare_action('play', (_this, index)=>{
+        if(!_this && !index){
+            if(!isPlay){
+                const tmp = $(`[data-index="${indexCurrent}"]`);
+                tmp.querySelector('audio').play();
+                tmp.querySelector('.icon-play').innerHTML = '<i class="fa-solid fa-pause"></i>';
+                tmp.classList.add('active');
+                $('.play-btn').innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }else{
+                const tmp = $(`[data-index="${indexCurrent}"]`);
+                tmp.querySelector('audio').pause();
+                tmp.querySelector('.icon-play').innerHTML = '<i class="fa-solid fa-play"></i>';
+                tmp.classList.remove('active');
+                $('.play-btn').innerHTML = '<i class="fa-solid fa-play"></i>';
+            }
+            isPlay = !isPlay;
+            return;
+        }
         const audi =  _this.querySelector('audio');
-        if(!(afterSong === _this)){
+        if(indexCurrent != index && isPlay){
+            const tmp = $(`[data-index="${indexCurrent}"]`);
+            tmp.querySelector('audio').pause();
+            tmp.querySelector('.icon-play').innerHTML = '<i class="fa-solid fa-play"></i>';
+            tmp.classList.remove('active');
+            isPlay = !isPlay;
+        }
+        if(afterSong !== _this){
             audi.load();
             afterSong = _this;
         }
+        const current = $(`[data-index="${index}"]`);
        if(!isPlay){
             audi.play();
             _this.querySelector('span').innerHTML = '<i class="fa-solid fa-pause"></i>';
+            current.classList.add('active');
+            indexCurrent = index;
         }else{
             audi.pause();
             _this.querySelector('span').innerHTML = '<i class="fa-solid fa-play"></i>';
+            current.classList.remove('active');
         }
+
+        $('.song-info img').src = $(`[data-index="${indexCurrent}"] img`).src;
         isPlay = !isPlay;
     });
     communicate.action(true);
