@@ -112,7 +112,6 @@ function playlist1(){
     const bai_hat = nhac_sep.play_list;
     let HTMLs = "";
     let length = bai_hat.length;
-    // <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif" class="isPlay"/>
     for(let i = 0 ; i <  length; i++){
         HTMLs += `
             <div class="playlist-item" data-index="${i}">
@@ -138,52 +137,32 @@ function playlist1(){
 }
 
 function playlist2(){
-    return `
-         <div class="playlist-item">
-            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-            <div class="play-button">
-                <span class="icon-play"></span>
-            </div>
-            <h4>Đàn Piano Bình Yên</h4> 
-            <p>Thư giãn và tận hưởng với những bản nhạc piano đẹp...</p>
-        </div>
+    const data = communicate.request_data('store', 'sql_data');
+    const playList = data.play_list;
 
-        <div class="playlist-item">
-            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-            <div class="play-button">
-                <span class="icon-play"></span>
+    let HTMLs = "";
+    let length = playList.length;
+    for(let i = 0 ; i <  length; i++){
+        HTMLs += `
+            <div class="playlist-item" data-index="${i}">
+                
+                <img src="${playList[i].thumbnail}" />
+                
+                <div class="play-button" onclick="handle.play(${i})">
+                    <span class="icon-play" >
+                        <i class="fa-solid fa-play"></i>
+                    </span>
+                    <audio preload="none">
+                        <source src="${playList[i].songurl}" type="audio/ogg">
+                    </audio>
+                </div>
+                
+                <h4>${playList[i].song_title}</h4> 
+                <p>${playList[i].artist_name}</p>
             </div>
-            <h4>Tập Trung Sâu</h4> 
-            <p>Giữ bình tĩnh và tập trung với nhạc nền và...</p>
-        </div>
-
-        <div class="playlist-item">
-            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-            <div class="play-button">
-                <span class="icon-play"></span>
-            </div>
-            <h4>Nghiên Cứu Nhạc Cụ</h4> 
-            <p>Tập trung với nhạc nhẹ nhàng trong khi học tập...</p>
-        </div>
-
-        <div class="playlist-item">
-            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-            <div class="play-button">
-                <span class="icon-play"></span>
-            </div>
-            <h4>Chill Lofi Học Tập</h4> 
-            <p>Những giai điệu học tập hoàn hảo, hai tư giờ...</p>
-        </div>
-
-        <div class="playlist-item">
-            <img src="https://tse3.mm.bing.net/th?id=OIP.osWGBcVDZuQ0Mvlo_VFxlgHaEK&pid=Api&P=0&h=180" />
-            <div class="play-button">
-                <span class="icon-play"></span>
-            </div>
-            <h4>Chế Độ Lập Trình</h4> 
-            <p>Dành riêng cho tất cả lập trình viên ngoài kia...</p>
-        </div>
-    `;
+        `;
+    }
+    return HTMLs;
 }
 
 function body(){
