@@ -90,13 +90,13 @@ function controlBar(){
                     <div class="loop-btn"><i class="fa-solid fa-arrows-rotate"></i></div>
                     <div class="backward-btn" onclick="handle.next(false)"><i class="fa-solid fa-backward"></i></div>
                     <div class="play-btn" onclick="handle.play()"><i class="fa-solid fa-play"></i></div>
-                    <div class="next-btn" onclick="handle.next(false)"><i class="fa-solid fa-forward"></i></div>
+                    <div class="next-btn" onclick="handle.next(true)"><i class="fa-solid fa-forward"></i></div>
                     <div class="random-btn"><i class="fa-solid fa-shuffle"></i></div>
                 </div>
                 <div class="progress">
-                    <span class="current-time">00:00</span>
+                    <span class="current-time">0:00</span>
                     <input type="range" value="0" min="0" max="246">
-                    <span class="duration-time">04:06</span>
+                    <span class="duration-time">0:00</span>
                 </div>
                 <div class="extra-controls">
                     <div class="volume-btn"><i class="fa-solid fa-volume-low"></i></div>
@@ -119,7 +119,7 @@ function playlist1(){
                 
                 <img src="${bai_hat[i].img}" />
                 
-                <div class="play-button" onclick="handle.play(this, ${i})">
+                <div class="play-button" onclick="handle.play(${i})">
                     <span class="icon-play" >
                         <i class="fa-solid fa-play"></i>
                     </span>
